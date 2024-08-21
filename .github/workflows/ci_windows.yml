@@ -1,0 +1,113 @@
+name: Windows
+
+on:
+    push:
+        paths:
+            - '**.cpp'
+            - '**.h'
+
+jobs:
+    msvc-release:
+        runs-on: windows-latest
+
+        steps:
+        - name: Checkout repository
+          uses: actions/checkout@v2
+
+        - name: Configure Compiler
+          uses: ilammy/msvc-dev-cmd@v1
+
+        - name: Install Qt
+          uses: jurplel/install-qt-action@v3
+          with:
+                version: 5.15.2
+                cache: true
+                cache-key-prefix: QtCache
+
+        - name: Cache Vcpkg Packages
+          id: vcpkg-cache
+          uses: actions/cache@v3
+          with:
+                path: vcpkg_ci_env
+                key: vcpkg-cache-windowsci
+                restore-keys: |
+                    vcpkg-cache-windowsci
+
+        - name: Install Vcpkg
+          if: steps.vcpkg-cache.outputs.cache-hit != 'true'
+          shell: powershell
+          run: |
+                echo "VCPKG_ROOT=" >> $GITHUB_ENV
+                git clone https://github.com/Microsoft/vcpkg.git vcpkg_ci_env
+                cd vcpkg_ci_env
+                .\bootstrap-vcpkg.bat
+                .\vcpkg integrate install
+                Add-Content -Path .\triplets\x64-windows.cmake -Value "set(VCPKG_BUILD_TYPE release)"
+                vcpkg install eigen3 --triplet x64-windows
+                vcpkg install gtest --triplet x64-windows
+                vcpkg install fmt --triplet x64-windows
+                vcpkg install spdlog --triplet x64-windows
+                vcpkg install ompl --triplet x64-windows
+                vcpkg install assimp --triplet x64-windows
+                vcpkg install orocos-kdl --triplet x64-windows
+                Remove-Item -Recurse -Force buildtrees
+                Remove-Item -Recurse -Force downloads
+                Remove-Item -Recurse -Force packages
+                Remove-Item -Recurse -Force ports
+                Remove-Item -Recurse -Force triplets
+                ls
+
+        - name: Install boost
+          uses: MarkusJx/install-boost@v2.4.5
+          id: install-boost
+          with:
+                # REQUIRED: Specify the required boost version
+                # A list of supported versions can be found here:
+                # https://github.com/MarkusJx/prebuilt-boost/blob/main/versions-manifest.json
+                boost_version: 1.83.0
+                # OPTIONAL: Specify a custon install location
+                boost_install_dir: ${{github.workspace}}
+                # OPTIONAL: Specify a platform version
+                platform_version: 2022
+                # OPTIONAL: Specify a toolset
+                toolset: msvc
+
+        - name: Cache OpenCascade archive
+          id: cache-occ
+          uses: actions/cache@v3
+          with:
+                path: occt-vc143-64.zip
+                key: occ-7.8.0
+
+        - name: Download OpenCascade
+          if: steps.cache-occ.outputs.cache-hit != 'true'
+          uses: carlosperate/download-file-action@v2
+          with:
+                file-url: 'https://github.com/Open-Cascade-SAS/OCCT/releases/download/V7_8_0/occt-vc143-64.zip'
+
+        - name: Extract OpenCascade
+          run: 7z x occt-vc143-64.zip
+
+        - name: Build Release
+          working-directory: ${{github.workspace}}
+          run: |
+                cmd.exe /k "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
+                cmake -DOpenCASCADE_DIR=${{github.workspace}}/occt-vc143-64/cmake `
+                -DBoost_INCLUDE_DIR=${{steps.install-boost.outputs.BOOST_ROOT}}/include `
+                -DBoost_LIBRARY_DIRS=${{steps.install-boost.outputs.BOOST_ROOT}}/lib `
+                -DVCPKG_MANIFEST_MODE=OFF `
+                -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_CXX_STANDARD=20 `
+                -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_C_COMPILER:FILEPATH=cl.exe `
+                -DCMAKE_TOOLCHAIN_FILE=${{github.workspace}}/vcpkg_ci_env/scripts/buildsystems/vcpkg.cmake `
+                -DCMAKE_CXX_COMPILER=cl.exe -B${{github.workspace}}/build/win_msvc_release `
+                -S${{github.workspace}} -G Ninja
+                cmake --build ${{github.workspace}}/build/win_msvc_release --config Release --target all --
+
+        - name: Execute Unit Tests Release
+          working-directory: ${{github.workspace}}/build/win_msvc_release
+          shell: cmd
+          env:
+                PATH: ${{env.PATH}};${{github.workspace}}\.github\win_occ\bin;${{github.workspace}}\occt-vc143-64\win64\vc14\bin
+          run: |
+                ctest -T test -j 2 --output-on-failure
+

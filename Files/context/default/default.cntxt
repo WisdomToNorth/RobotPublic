@@ -1,0 +1,35 @@
+{
+    "ContextVersion": 1.0,
+    "Name": "{Default Context}",
+    "ARM": [
+        {
+            "name": "{colorful_robot}",
+            "path": "/colorful_robot.json",
+            "parampath": "/colorful_robot.rfpara"
+        }
+    ],
+    "WORKBENCH": [
+        {
+            "name": "workbench_simple",
+            "path": "/worktable.json",
+            "parampath": "/worktable.rfpara"
+        },
+        {
+            "name": "workbench_real",
+            "path": "/workbench_real.json",
+            "parampath": "/workbench_real.rfpara"
+        },
+        {
+            "name": "computer_desk",
+            "path": "/computer_desk.json",
+            "parampath": "/computer_desk.rfpara"
+        }
+    ],
+    "TOOL": [
+        {
+            "name": "weldgun",
+            "path": "/weldgun.json",
+            "parampath": "/weldgun.rfpara"
+        }
+    ]
+}

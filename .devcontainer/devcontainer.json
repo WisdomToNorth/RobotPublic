@@ -1,0 +1,7 @@
+{
+    "name": "RobotFrameEnv",
+    "image": "mcr.microsoft.com/vscode/devcontainers/cpp:ubuntu-22.04",
+    "forwardPorts": [
+        3000
+    ]
+}

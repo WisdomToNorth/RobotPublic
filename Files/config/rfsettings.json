@@ -1,0 +1,12 @@
+{
+    "bg_color": [
+        "\"RGB\": [1, 0, 0]",
+        "\"RGB\": [0, 1, 0]",
+        "\"RGB\": [0, 0, 1]"
+    ],
+    "edit_time": "2023-11-07 11:06:10",
+    "font_family": "Consolas",
+    "font_size": 12,
+    "setting_id": "{4fd63631-a654-4629-8172-7a1af6cf4a30}",
+    "theme_file_name": "xslight.qss"
+}

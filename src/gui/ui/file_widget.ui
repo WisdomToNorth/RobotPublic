@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FilemgrWidget</class>
+ <widget class="QWidget" name="FilemgrWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>494</width>
+    <height>629</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>QtWidgetsClass</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_3" rowstretch="2" columnstretch="0">
+   <item row="0" column="0">
+    <widget class="QTreeWidget" name="model_widget">
+     <column>
+      <property name="text">
+       <string notr="true">Model</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>VIndex</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string/>
+      </property>
+     </column>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

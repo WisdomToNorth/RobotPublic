@@ -1,0 +1,250 @@
+QWidget {
+    background-color: rgb(235, 242, 246);
+    border-color: rgb(20, 0, 56);
+    color: rgb(7, 1, 29);
+    min-height: 1.25em;
+}
+
+QAbstractItemView {
+    show-decoration-selected: 1;
+    background: rgb(231, 233, 235);
+    selection-background-color:rgb(59, 59, 59);
+}
+
+QAbstractItemView::item:hover {
+    background: rgb(174, 174, 174);
+}
+
+QLineEdit,QTextEdit,QPlainTextEdit,QSpinBox,QDoubleSpinBox,QComboBox,QDateEdit,QTimeEdit,QDateTimeEdit {
+    background: rgb(184, 194, 200);
+    min-height: 1.25em;
+    border-radius:3px;
+    padding: 0em 0.2em 0em 0.2em;
+}
+
+QComboBox:editable {
+    background: rgb(169, 169, 169);
+}
+
+QComboBox::selection{
+    color:blue
+}
+
+QComboBox:disabled {
+    background: rgb(255, 255, 255);
+}
+
+QDockWidget::title {
+    text-align: left;
+    border: 0.1em solid rgb(216, 222, 224);
+    background: rgb(216, 222, 224);
+    padding: 0.1em 0.2em 0.1em 0.2em;
+}
+
+QDoubleSpinBox {
+    background: rgb(215, 217, 218);
+}
+
+QFileDialog {
+    background: rgb(215, 217, 218);
+}
+
+QFrame[frameShape="5"] {
+    color: rgb(204, 204, 204);
+    margin-top: 0.15em;
+    margin-bottom: 0.15em;
+}
+
+QGroupBox {
+    border: 0.1em solid rgb(219, 219, 219);
+    margin-top: 4ex;
+}
+
+QHeaderView::section {
+    background-color:rgb(215, 217, 218);
+    border: 0em;
+    padding-left: 0.25em;
+}
+
+QLineEdit {
+    background: rgb(215, 217, 218);
+}
+
+QMenu {
+    background: rgb(215, 217, 218);
+    border: 0.1em solid rgb(215, 217, 218);
+}
+
+QMenu::separator {
+    background: rgb(215, 217, 218);
+    height: 0.1em;
+}
+
+QMenu::item {
+    padding: 0.75em 1em;
+    margin: 0.3em 0.25em;
+    border-bottom: 0.1em solid rgb(215, 217, 218);
+}
+
+QMenu::item:selected {
+    background-color: rgb(171, 200, 216);
+    color:gray
+}
+
+QProgressBar {
+    background: rgb(231, 231, 231);
+}
+
+QTabWidget::pane {
+    border: 0.15em solid rgb(215, 217, 218);
+    padding: -0.1em;
+}
+
+QTabWidget::tab-bar {
+    alignment: center;
+    min-width: 0.8em;
+}
+
+QTabBar::tab {
+    padding: 1em 0.1em 1em 0.1em;
+    background: rgb(215, 217, 218);
+    border: 0.15em solid rgb(198, 198, 198);
+    min-width: 0.8em;
+    min-height: 0.8em;
+}
+
+QTabBar::tab:selected,
+QTabBar::tab:hover {
+    background: rgb(208, 225, 235);
+}
+
+QTabBar::tab:selected {
+    border: 0.15em solid rgb(235, 248, 255);
+    border-top-left-radius: 0.3em;
+    border-top-right-radius: 0.3em;
+    padding: 0.5em;
+}
+
+QTreeView {
+    background-color: rgb(236, 236, 236);
+    alternate-background-color:rgb(195, 195, 195);
+}
+
+QTreeWidget {
+    background-color: rgb(236, 236, 236);
+    alternate-background-color:rgb(195, 195, 195);
+}
+
+QSpinBox {
+    background: rgb(215, 217, 218);
+}
+
+QSizeGrip{
+    width: 1em;
+    height: 1em;
+    background-color: #ffffff;
+}
+
+QPlainTextEdit{
+    background-color: rgb(231, 233, 235);;
+}
+
+QPushButton {
+    background-color: rgb(224, 228, 230);
+}
+
+QPushButton:hover {
+    background-color: rgb(125, 181, 255)
+}
+
+QPushButton:pressed {
+    background-color: rgb(0, 110, 255)
+}
+
+QPushButton:disabled {
+    background-color: rgb(222, 222, 222);
+    color:rgb(124, 124, 124)
+}
+
+QStatusBar {
+    background-color: rgb(225, 225, 225);
+    min-height: 1em;
+}
+
+QTextEdit {
+    background: rgb(215, 217, 218);
+}
+
+QToolBar {
+    background-color: rgb(197, 207, 217);
+    border: none;
+    padding: 0.1em;
+}
+
+QToolButton {
+    color: rgb(10, 0, 37);
+    background: rgb(197, 207, 217);
+    padding: 0.25em;
+    border-radius: 0.3em;
+    min-height: 0.6em;
+    min-width: 0.6em;
+}
+
+QToolButton:hover {
+    background: rgb(170, 192, 211);
+}
+
+QToolButton:pressed {
+    background: rgb(112, 128, 141);
+}
+
+QScrollBar:vertical {
+    width: 0.75em;
+    background: rgba(27, 122, 177, 0);
+    margin: 0em, 0em, 0em, 0em;
+    padding-top: 0.75em;
+    /* 留出0.75em给上面和下面的箭头*/
+    padding-bottom: 0.75em;
+}
+
+QScrollBar::handle:vertical {
+    width: 0.75em;
+    background: rgba(0, 24, 159, 0.25);
+    border-radius: 0.3em;
+    min-height: 2em;
+}
+
+QScrollBar::handle:vertical:hover {
+    width: 0.75em;
+    background: rgba(96, 156, 239, 0.5);
+}
+
+QScrollBar::add-line:vertical {
+    height: 0.75em;
+    width: 0.75em;
+    subcontrol-position: bottom;
+}
+
+QScrollBar::sub-line:vertical {
+    height: 0.75em;
+    width: 0.75em;
+    subcontrol-position: top;
+}
+
+QScrollBar::add-line:vertical:hover {
+    height: 0.75em;
+    width: 0.75em;
+    subcontrol-position: bottom;
+}
+
+QScrollBar::sub-line:vertical:hover {
+    height: 0.75em;
+    width: 0.75em;
+    subcontrol-position: top;
+}
+
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: rgba(43, 103, 140, 0.1);
+    border-radius: 0.3em;
+}

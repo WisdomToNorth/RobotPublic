@@ -1,0 +1,28 @@
+{
+    "Trsf": "\"Location\": [865, 0, 1250], \"Matrix\": [0, 1, 0, 1, 0, 0, 0, 0, -1], \"shape\": 7, \"scale\": 1",
+    "type": 0,
+    "assemPttoTCP": [
+        525,
+        0,
+        40
+    ],
+    "pipeDir": [
+        0,
+        1,
+        0
+    ],
+    "pipeCtr": [
+        0,
+        300,
+        -120
+    ],
+    "pipeRadius": 10,
+    "pipeArc": 150,
+    "tcpPt": [
+        0,
+        550,
+        -40
+    ],
+    "weldWireLength": 15,
+    "weldWireRadius": 1
+}

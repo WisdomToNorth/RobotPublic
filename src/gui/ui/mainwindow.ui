@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>REMainWindowClass</class>
+ <widget class="QMainWindow" name="REMainWindowClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1359</width>
+    <height>880</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>REMainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::TopToolBarArea</set>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextBesideIcon</enum>
+   </property>
+   <property name="floatable">
+    <bool>true</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="separator"/>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1359</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <action name="actionnew">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/REMainWindow/icon/lightpng/new.png</normaloff>:/REMainWindow/icon/lightpng/new.png</iconset>
+   </property>
+   <property name="text">
+    <string>new</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionopen">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/REMainWindow/icon/lightpng/Home.png</normaloff>:/REMainWindow/icon/lightpng/Home.png</iconset>
+   </property>
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actiondemo">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/REMainWindow/icon/lightpng/solid.png</normaloff>:/REMainWindow/icon/lightpng/solid.png</iconset>
+   </property>
+   <property name="text">
+    <string>Demo</string>
+   </property>
+  </action>
+  <action name="actionsave">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/REMainWindow/icon/lightpng/save.png</normaloff>:/REMainWindow/icon/lightpng/save.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="action_info">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/REMainWindow/icon/lightpng/info.png</normaloff>:/REMainWindow/icon/lightpng/info.png</iconset>
+   </property>
+   <property name="text">
+    <string>Info</string>
+   </property>
+  </action>
+  <action name="actionRuler">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/REMainWindow/icon/lightpng/ruler.png</normaloff>:/REMainWindow/icon/lightpng/ruler.png</iconset>
+   </property>
+   <property name="text">
+    <string>calculator</string>
+   </property>
+  </action>
+  <action name="actionreset_all">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/REMainWindow/icon/lightpng/reset.png</normaloff>:/REMainWindow/icon/lightpng/reset.png</iconset>
+   </property>
+   <property name="text">
+    <string>Reset</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/REMainWindow/icon/lightpng/delete_one.png</normaloff>:/REMainWindow/icon/lightpng/delete_one.png</iconset>
+   </property>
+   <property name="text">
+    <string>Close</string>
+   </property>
+  </action>
+  <action name="actionzoom_reset">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/REMainWindow/icon/lightpng/zoom_reset.png</normaloff>:/REMainWindow/icon/lightpng/zoom_reset.png</iconset>
+   </property>
+   <property name="text">
+    <string>FitAll</string>
+   </property>
+  </action>
+  <action name="action">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/REMainWindow/icon/eraser.png</normaloff>:/REMainWindow/icon/eraser.png</iconset>
+   </property>
+   <property name="text">
+    <string>show</string>
+   </property>
+  </action>
+  <action name="actionbndBOX">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/REMainWindow/icon/cube.png</normaloff>:/REMainWindow/icon/cube.png</iconset>
+   </property>
+   <property name="text">
+    <string>bndBOX</string>
+   </property>
+  </action>
+  <action name="actionmove">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/REMainWindow/icon/lightpng/solid.png</normaloff>:/REMainWindow/icon/lightpng/solid.png</iconset>
+   </property>
+   <property name="text">
+    <string>Move</string>
+   </property>
+  </action>
+  <action name="actionedit">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/REMainWindow/icon/edit.png</normaloff>:/REMainWindow/icon/edit.png</iconset>
+   </property>
+   <property name="text">
+    <string>RobotAssigner</string>
+   </property>
+  </action>
+  <action name="actionss">
+   <property name="text">
+    <string>ss</string>
+   </property>
+  </action>
+  <action name="actionparallel">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/REMainWindow/icon/parallel.png</normaloff>:/REMainWindow/icon/parallel.png</iconset>
+   </property>
+   <property name="text">
+    <string>parallel</string>
+   </property>
+  </action>
+  <action name="actionvertical">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/REMainWindow/icon/vertical.png</normaloff>:/REMainWindow/icon/vertical.png</iconset>
+   </property>
+   <property name="text">
+    <string>vertical</string>
+   </property>
+  </action>
+  <action name="actionaux_obj">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/REMainWindow/icon/tools.png</normaloff>:/REMainWindow/icon/tools.png</iconset>
+   </property>
+   <property name="text">
+    <string>aux_obj</string>
+   </property>
+  </action>
+  <action name="actiontool">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/REMainWindow/icon/tool.png</normaloff>:/REMainWindow/icon/tool.png</iconset>
+   </property>
+   <property name="text">
+    <string>tool</string>
+   </property>
+  </action>
+  <action name="actionswapUI">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/REMainWindow/icon/lightpng/moon.png</normaloff>:/REMainWindow/icon/lightpng/moon.png</iconset>
+   </property>
+   <property name="text">
+    <string>swapUI</string>
+   </property>
+  </action>
+  <action name="actioncontextAdder">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/REMainWindow/icon/context.png</normaloff>:/REMainWindow/icon/context.png</iconset>
+   </property>
+   <property name="text">
+    <string>contextAdder</string>
+   </property>
+  </action>
+  <action name="actionnewViewer">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/REMainWindow/icon/lightpng/view.png</normaloff>:/REMainWindow/icon/lightpng/view.png</iconset>
+   </property>
+   <property name="text">
+    <string>newViewer</string>
+   </property>
+  </action>
+  <action name="actionnewContext">
+   <property name="icon">
+    <iconset resource="contexteditor.qrc">
+     <normaloff>:/REMainWindow/icons/light/context.png</normaloff>:/REMainWindow/icons/light/context.png</iconset>
+   </property>
+   <property name="text">
+    <string>newContext</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="contexteditor.qrc"/>
+ </resources>
+ <connections/>
+</ui>

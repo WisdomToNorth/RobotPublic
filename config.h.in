@@ -1,0 +1,45 @@
+#ifndef _CONFIG_H_
+#define _CONFIG_H_
+#include <string>
+
+// clang-format off
+const unsigned int NUMBER_OF_LOGICAL_CORES      = @_NUMBER_OF_LOGICAL_CORES@;
+const unsigned int NUMBER_OF_PHYSICAL_CORES     = @_NUMBER_OF_PHYSICAL_CORES@;
+const unsigned int TOTAL_VIRTUAL_MEMORY         = @_TOTAL_VIRTUAL_MEMORY@;
+const unsigned int AVAILABLE_VIRTUAL_MEMORY     = @_AVAILABLE_VIRTUAL_MEMORY@;
+const unsigned int TOTAL_PHYSICAL_MEMORY        = @_TOTAL_PHYSICAL_MEMORY@;
+const unsigned int AVAILABLE_PHYSICAL_MEMORY    = @_AVAILABLE_PHYSICAL_MEMORY@;
+const unsigned int IS_64BIT                     = @_IS_64BIT@;
+const unsigned int HAS_FPU                      = @_HAS_FPU@;
+const unsigned int HAS_MMX                      = @_HAS_MMX@;
+const unsigned int HAS_MMX_PLUS                 = @_HAS_MMX_PLUS@;
+const unsigned int HAS_SSE                      = @_HAS_SSE@;
+const unsigned int HAS_SSE2                     = @_HAS_SSE2@;
+const unsigned int HAS_SSE_FP                   = @_HAS_SSE_FP@;
+const unsigned int HAS_SSE_MMX                  = @_HAS_SSE_MMX@;
+const unsigned int HAS_AMD_3DNOW                = @_HAS_AMD_3DNOW@;
+const unsigned int HAS_AMD_3DNOW_PLUS           = @_HAS_AMD_3DNOW_PLUS@;
+const unsigned int HAS_IA64                     = @_HAS_IA64@;
+const std::string OS_NAME                       = "@_OS_NAME@";
+const std::string OS_RELEASE                    = "@_OS_RELEASE@";
+const std::string OS_VERSION                    = "@_OS_VERSION@";
+const std::string OS_PLATFORM                   = "@_OS_PLATFORM@";
+
+const std::string PROGRAM_VERSION               = "@PROJECT_VERSION@";
+const std::string CONTEXT_VERSION               = "@CONTEXT_VERSION@";
+const std::string BUILD_TIME                    = "@BUILD_TIME@";
+
+const std::string APP_PATH                      = "@APP_PATH@";
+const std::string APP_LOG_PATH                  = "@APP_LOG_PATH@";
+const std::string APP_RESOURCE_PATH             = "@APP_RESOURCE_PATH@";
+const std::string APP_CONTEXT_PATH              = "@APP_CONTEXT_PATH@";
+const std::string APP_CONFIG_PATH               = "@APP_CONFIG_PATH@";
+const std::string APP_THEME_PATH                = "@APP_THEME_PATH@";
+
+const std::string REG_ROOT_FOLDER               = "@REG_ROOT_FOLDER@";
+const std::string REG_OUTPUT_FOLDER             = "@REG_OUTPUT_FOLDER@";
+const std::string REG_FILE_FOLDER               = "@REG_FILE_FOLDER@";
+const std::string REG_RESOURCE_FOLDER           = "@REG_RESOURCE_FOLDER@";
+// clang-format on
+
+#endif // _CONFIG_H_
