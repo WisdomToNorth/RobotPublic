@@ -4,7 +4,6 @@ namespace Mayo
 {
 
 using FunctionCreateGraphicsDriver = std::function<Handle_Graphic3d_GraphicDriver()>;
-
 FunctionCreateGraphicsDriver &getFunctionCreateGraphicsDriver()
 {
     static FunctionCreateGraphicsDriver fn = []
