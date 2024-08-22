@@ -3,77 +3,20 @@
 #include <cassert>
 #include <iostream>
 
+#include "rfbase/meta_enum.h"
+
 namespace rfgui
 {
-namespace cmd
+
+std::string CmdUtil::getCmdName(ECmd _enum)
 {
-std::string CmdUtil::getCmdName(ECmd _)
-{
-    switch (_)
-    {
-    case ECmd::None: return "";
-    case ECmd::ConfigRobot: return kConfigRobot;
-    case ECmd::ChangeContext: return kChangeContext;
-    case ECmd::DrawDemo: return kDrawDemo;
-    case ECmd::ExportFile: return kExportFile;
-    case ECmd::ImportFile: return kImportFile;
-    case ECmd::Move: return kMove;
-    case ECmd::NewContext: return kNewContext;
-    case ECmd::PanViewer: return kPanViewer;
-    case ECmd::RemoveContext: return kRemoveContext;
-    case ECmd::RobotForward: return kRobotForward;
-    case ECmd::RobotMove: return kRobotMove;
-    case ECmd::Ruler: return kRuler;
-    case ECmd::Remove: return kRemove;
-    case ECmd::RotViewer: return kRotViewer;
-    case ECmd::Setting: return kSetting;
-    case ECmd::ShowInfo: return kShowInfo;
-    case ECmd::Undo: return kUndo;
-    case ECmd::ZoomViewer: return kZoomViewer;
-    }
-    return "";
+    return rfbase::MetaEnum::nameStr(_enum).c_str();
 }
 
-ECmd CmdUtil::getCmdEnum(const std::string &_cmd_name)
+std::optional<ECmd> CmdUtil::getCmdEnum(const std::string &_cmd_name)
 {
-    if (_cmd_name == kConfigRobot)
-        return ECmd::ConfigRobot;
-    if (_cmd_name == kChangeContext)
-        return ECmd::ChangeContext;
-    if (_cmd_name == kDrawDemo)
-        return ECmd::DrawDemo;
-    if (_cmd_name == kExportFile)
-        return ECmd::ExportFile;
-    if (_cmd_name == kImportFile)
-        return ECmd::ImportFile;
-    if (_cmd_name == kMove)
-        return ECmd::Move;
-    if (_cmd_name == kNewContext)
-        return ECmd::NewContext;
-    if (_cmd_name == kPanViewer)
-        return ECmd::PanViewer;
-    if (_cmd_name == kRemoveContext)
-        return ECmd::RemoveContext;
-    if (_cmd_name == kRobotForward)
-        return ECmd::RobotForward;
-    if (_cmd_name == kRobotMove)
-        return ECmd::RobotMove;
-    if (_cmd_name == kRuler)
-        return ECmd::Ruler;
-    if (_cmd_name == kRemove)
-        return ECmd::Remove;
-    if (_cmd_name == kRotViewer)
-        return ECmd::RotViewer;
-    if (_cmd_name == kSetting)
-        return ECmd::Setting;
-    if (_cmd_name == kShowInfo)
-        return ECmd::ShowInfo;
-    if (_cmd_name == kUndo)
-        return ECmd::Undo;
-    if (_cmd_name == kZoomViewer)
-        return ECmd::ZoomViewer;
-
-    return ECmd::None;
+    std::string_view cmd_name = _cmd_name;
+    return magic_enum::enum_cast<ECmd>(cmd_name);
 }
 
 std::unordered_map<ECmd, std::string> CmdUtil::cmd_shortcut_map_{
@@ -139,5 +82,4 @@ bool CmdUtil::isShortcutUsed(const std::string &shortcut)
     }
     return false;
 }
-} // namespace cmd
 } // namespace rfgui

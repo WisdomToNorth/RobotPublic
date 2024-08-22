@@ -41,7 +41,8 @@ int AppManager::runApp(int argc, char *argv[])
         std::string command_str;
         while (std::cin >> command_str)
         {
-            if (system.addToCmdList(command_str))
+            std::optional<ECmd> cmd_enum = CmdUtil::getCmdEnum(command_str);
+            if (cmd_enum.has_value() && system.addToCmdList(cmd_enum.value()))
             {
                 std::ignore = system.executeLatestCmd();
             }

@@ -4,7 +4,8 @@
 
 namespace rfgui
 {
-CmdBase::CmdBase(CmdType type) : type_(type)
+CmdBase::CmdBase(CmdType type)
+    : type_(type)
 {
 }
 CmdBase::~CmdBase()
@@ -49,14 +50,23 @@ std::string CmdBase::getCmdName() const
     return cmd_name_;
 }
 
-const cmd::Parameter &CmdBase::getParameter() const
+const Parameter &CmdBase::getParameter() const
 {
     return parameter_;
 }
 
-void CmdBase::setParameter(const cmd::Parameter &parameter)
+void CmdBase::setParameter(const Parameter &parameter)
 {
     parameter_ = parameter;
 }
 
+void CmdBase::setEnabled(bool enabled)
+{
+    enabled_ = enabled;
+}
+
+bool CmdBase::isEnabled() const
+{
+    return enabled_;
+}
 } // namespace rfgui

@@ -8,34 +8,34 @@
 
 namespace rfgui
 {
-std::string CmdIcon::getIconFileName(cmd::ECmd cmd_name)
+std::string CmdIcon::getIconFileName(ECmd cmd_name)
 {
     switch (cmd_name)
     {
-    case cmd::ECmd::ConfigRobot: return "config.png";
-    case cmd::ECmd::DrawDemo: return "draw.png";
-    case cmd::ECmd::ExportFile: return "export.png";
-    case cmd::ECmd::ImportFile: return "import.png";
-    case cmd::ECmd::Move: return "location.png";
-    case cmd::ECmd::NewContext: return "context.png";
-    case cmd::ECmd::PanViewer: return "pan.png";
-    case cmd::ECmd::RobotForward: return "tool.png";
-    case cmd::ECmd::RobotMove: return "path.png";
-    case cmd::ECmd::RemoveContext: return "";
-    case cmd::ECmd::Ruler: return "ruler.png";
-    case cmd::ECmd::Remove: return "delete.png";
-    case cmd::ECmd::RotViewer: return "rotate.png";
-    case cmd::ECmd::ChangeContext: return "";
-    case cmd::ECmd::Setting: return "setting.png";
-    case cmd::ECmd::ShowInfo: return "info.png";
-    case cmd::ECmd::Undo: return "undo.png";
-    case cmd::ECmd::ZoomViewer: return "zoom.png";
-    case cmd::ECmd::None: return "";
+    case ECmd::ConfigRobot: return "config.png";
+    case ECmd::DrawDemo: return "draw.png";
+    case ECmd::ExportFile: return "export.png";
+    case ECmd::ImportFile: return "import.png";
+    case ECmd::Move: return "location.png";
+    case ECmd::NewContext: return "context.png";
+    case ECmd::PanViewer: return "pan.png";
+    case ECmd::RobotForward: return "tool.png";
+    case ECmd::RobotMove: return "path.png";
+    case ECmd::RemoveContext: return "";
+    case ECmd::Ruler: return "ruler.png";
+    case ECmd::Remove: return "delete.png";
+    case ECmd::RotViewer: return "rotate.png";
+    case ECmd::ChangeContext: return "";
+    case ECmd::Setting: return "setting.png";
+    case ECmd::ShowInfo: return "info.png";
+    case ECmd::Undo: return "undo.png";
+    case ECmd::ZoomViewer: return "zoom.png";
+    case ECmd::None: return "";
     }
     return "";
 }
 
-std::string CmdIcon::getIconPath(const std::string &theme_file_name, cmd::ECmd cmd_name)
+std::string CmdIcon::getIconPath(const std::string &theme_file_name, ECmd cmd_name)
 {
     std::unordered_set<std::string> dark_set = {"darkmode.qss", "darkmode.qss", "steam.qss",
                                                 "steam.qss",    "xsdark.qss",   "xsdark.qss"};
@@ -44,12 +44,7 @@ std::string CmdIcon::getIconPath(const std::string &theme_file_name, cmd::ECmd c
     return icon_path + getIconFileName(cmd_name);
 }
 
-std::string CmdIcon::getIconPath(const std::string &cmd_name)
-{
-    return getIconPath(cmd::CmdUtil::getCmdEnum(cmd_name));
-}
-
-std::string CmdIcon::getIconPath(cmd::ECmd cmd_name)
+std::string CmdIcon::getIconPath(ECmd cmd_name)
 {
     auto setting = GApp::instance().getSetting();
     auto theme_name = setting ? setting->getThemeFileName() : "";

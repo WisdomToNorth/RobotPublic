@@ -27,8 +27,6 @@ public:
         return *instance;
     }
 
-    std::unique_ptr<CmdBase> createCommand(const std::string &cmd_name);
-
     void getCmdRMenu();
 
     void processRMenuAction(const std::string &action_name);

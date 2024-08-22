@@ -13,6 +13,7 @@
 #include "rflog/rfLogListWidget.h"
 
 #include "command/cmd_base.h"
+#include "command/cmdregister.h"
 #include "ui/app_mode_dock.h"
 #include "ui/cmd_dock.h"
 #include "ui/file_explore_dock.h"
@@ -377,7 +378,7 @@ void GApp::processViewerEvent(const rfapp::ViewerEvent &view_event)
     }
     else if (view_event.type_flags == rfapp::VType::LRButtonDown)
     {
-        std::ignore = addToCmdList(cmd::kRotViewer);
+        std::ignore = addToCmdList(ECmd::RotViewer);
         CmdMngr::getInstance().process(view_event);
     }
     else if (view_event.type_flags == rfapp::VType::MouseMove)
@@ -386,12 +387,12 @@ void GApp::processViewerEvent(const rfapp::ViewerEvent &view_event)
     }
     else if (view_event.type_flags == rfapp::VType::MouseWheel)
     {
-        std::ignore = addToCmdList(cmd::kZoomViewer);
+        std::ignore = addToCmdList(ECmd::ZoomViewer);
         CmdMngr::getInstance().process(view_event);
     }
     else if (view_event.type_flags == rfapp::VType::MButtonDown)
     {
-        std::ignore = addToCmdList(cmd::kPanViewer);
+        std::ignore = addToCmdList(ECmd::PanViewer);
         CmdMngr::getInstance().process(view_event);
     }
     else if (view_event.type_flags == rfapp::VType::MButtonUp)
@@ -432,14 +433,14 @@ void GApp::setAppFont(const std::string &font_family, unsigned int font_size)
     QApplication::setFont(QFont(font_family.c_str(), font_size));
 }
 
-bool GApp::addToCmdList(const std::string &cmd_str)
+bool GApp::addToCmdList(ECmd cmdenum)
 {
-    return addToCmdList(CmdMngr::getInstance().createCommand(cmd_str));
+    return addToCmdList(CmdRegister::createCommand(cmdenum));
 }
 
-bool GApp::addToCmdList(const std::string &cmd, const cmd::Parameter &parameter)
+bool GApp::addToCmdList(ECmd cmdenum, const Parameter &parameter)
 {
-    std::unique_ptr<CmdBase> cmd_ptr(CmdMngr::getInstance().createCommand(cmd));
+    std::unique_ptr<CmdBase> cmd_ptr(CmdRegister::createCommand(cmdenum));
     if (!cmd_ptr)
     {
         return false;

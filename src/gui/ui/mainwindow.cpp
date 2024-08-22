@@ -123,26 +123,25 @@ void REMainWindow::showEvent(QShowEvent *event)
 
 void REMainWindow::initCmdActions()
 {
-    std::vector<std::pair<std::string, cmd::ECmd>> cmds;
+    std::vector<std::pair<std::string, ECmd>> cmds;
     CmdRegister::getUserCmds(cmds);
 
     std::unordered_map<std::string, QMenu *> menu_map;
     for (const auto &[group, cmdenum] : cmds)
     {
         // Create action
-        const std::string &cmd_name = cmd::CmdUtil::getCmdName(cmdenum);
+        const std::string &cmd_name = CmdUtil::getCmdName(cmdenum);
         QAction *action = new QAction(this);
         action->setText(cmd_name.c_str());
         std::string icon_path = CmdIcon::getIconPath(cmdenum);
         // fmt::print("icon path: {}\n", icon_path);
         action->setIcon(QIcon(QString::fromStdString(icon_path)));
         action->setObjectName(cmd_name.c_str());
-        action->setShortcut(
-            QKeySequence::fromString(cmd::CmdUtil::getCmdShortCut(cmdenum).c_str()));
+        action->setShortcut(QKeySequence::fromString(CmdUtil::getCmdShortCut(cmdenum).c_str()));
         connect(action, &QAction::triggered, this,
-                [cmd_name]()
+                [cmdenum]()
                 {
-                    if (GApp::instance().addToCmdList(cmd_name))
+                    if (GApp::instance().addToCmdList(cmdenum))
                     {
                         std::ignore = GApp::instance().executeLatestCmd();
                     }
@@ -202,7 +201,8 @@ void REMainWindow::updateActionIcon()
 {
     for (auto &action : cmd_actions_)
     {
-        std::string icon_path = CmdIcon::getIconPath(action->objectName().toStdString());
+        auto l_enum = CmdUtil::getCmdEnum(action->objectName().toStdString()).value();
+        std::string icon_path = CmdIcon::getIconPath(l_enum);
         action->setIcon(QIcon(QString::fromStdString(icon_path)));
     }
 }

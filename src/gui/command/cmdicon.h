@@ -11,12 +11,11 @@ namespace rfgui
 class CmdIcon
 {
 public:
-    static std::string getIconPath(cmd::ECmd cmd_name);
-    static std::string getIconPath(const std::string &cmd_name);
+    static std::string getIconPath(ECmd cmd_name);
 
 private:
-    static std::string getIconPath(const std::string &theme_file_name, cmd::ECmd cmd_name);
-    static std::string getIconFileName(cmd::ECmd cmd_name);
+    static std::string getIconPath(const std::string &theme_file_name, ECmd cmd_name);
+    static std::string getIconFileName(ECmd cmd_name);
 };
 } // namespace rfgui
 #endif

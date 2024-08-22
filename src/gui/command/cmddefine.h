@@ -3,6 +3,7 @@
 #ifndef CMD_DEFINE_H
 #define CMD_DEFINE_H
 
+#include <optional>
 #include <string>
 #include <unordered_map>
 
@@ -19,28 +20,7 @@ enum class CmdType : char
     Nestable     // execute in a nested command
 };
 
-namespace cmd
-{
-static const std::string kConfigRobot = "ConfigRobot";
-static const std::string kDrawDemo = "DrawDemo";
-static const std::string kExportFile = "ExportFile";
-static const std::string kImportFile = "ImportFile";
-static const std::string kMove = "Move";
-static const std::string kNewContext = "NewContext";
-static const std::string kPanViewer = "PanViewer";
-static const std::string kRemoveContext = "RemoveContext";
-static const std::string kRobotForward = "RobotForward";
-static const std::string kRobotMove = "RobotMove";
-static const std::string kRuler = "Ruler";
-static const std::string kRemove = "Remove";
-static const std::string kRotViewer = "RotViewer";
-static const std::string kChangeContext = "ChangeContext";
-static const std::string kSetting = "Setting";
-static const std::string kShowInfo = "ShowInfo";
-static const std::string kUndo = "Undo";
-static const std::string kZoomViewer = "ZoomViewer";
-
-enum class ECmd
+enum class ECmd : unsigned char
 {
     None,
     ConfigRobot,
@@ -73,7 +53,7 @@ struct Parameter
 struct CmdUtil
 {
     static std::string getCmdName(ECmd cmd);
-    static ECmd getCmdEnum(const std::string &cmd_name);
+    static std::optional<ECmd> getCmdEnum(const std::string &cmd_name);
     static std::string getCmdShortCut(ECmd cmd);
     static bool isShortcutUsed(const std::string &shortcut);
 
@@ -85,6 +65,5 @@ private:
     static std::unordered_map<ECmd, std::string> cmd_shortcut_map_;
 };
 
-} // namespace cmd
 } // namespace rfgui
 #endif

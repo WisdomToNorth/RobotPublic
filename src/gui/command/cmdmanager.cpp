@@ -8,10 +8,6 @@
 
 namespace rfgui
 {
-std::unique_ptr<CmdBase> CmdMngr::createCommand(const std::string &cmd_name)
-{
-    return CmdRegister::createCommand(cmd_name);
-}
 
 void CmdMngr::getCmdRMenu()
 {

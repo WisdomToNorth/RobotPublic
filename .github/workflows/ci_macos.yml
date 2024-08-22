@@ -55,5 +55,5 @@ jobs:
         - name: Execute Unit Tests Release
           working-directory: ${{github.workspace}}/build/Mac_Ninja_Release
           run: |
-            ctest -T test -j 3 --output-on-failure -E "UndoableObjectsTest.Concurrency"
+            ctest -T test -j 3 --output-on-failure
 

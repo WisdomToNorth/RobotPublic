@@ -86,8 +86,8 @@ public:
 
     void processViewerEvent(const rfapp::ViewerEvent &view_event);
 
-    [[nodiscard]] bool addToCmdList(const std::string &cmd);
-    [[nodiscard]] bool addToCmdList(const std::string &cmd, const cmd::Parameter &parameter);
+    [[nodiscard]] bool addToCmdList(ECmd cmdenum);
+    [[nodiscard]] bool addToCmdList(ECmd cmdenum, const Parameter &parameter);
     [[nodiscard]] bool addToCmdList(std::unique_ptr<CmdBase> cmd);
     [[nodiscard]] bool executeLatestCmd();
 

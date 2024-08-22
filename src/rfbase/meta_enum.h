@@ -4,13 +4,14 @@
 ** See license at https://github.com/fougue/mayo/blob/master/LICENSE.txt
 ****************************************************************************/
 
-#pragma once
+#ifndef RF_BASE_META_ENUM_H
+#define RF_BASE_META_ENUM_H
 
 #include <magic_enum/magic_enum.hpp>
+
 namespace rfbase
 {
-// Provides meta-data helper functions about enumerated types
-// Currently it wraps magic_enum 3rdparty library
+
 class MetaEnum
 {
 public:
@@ -18,6 +19,12 @@ public:
     static std::string_view name(ENUM enumValue)
     {
         return magic_enum::enum_name(enumValue);
+    }
+
+    template <typename ENUM>
+    static std::string nameStr(ENUM enumValue)
+    {
+        return magic_enum::enum_name(enumValue).data();
     }
 
     template <typename ENUM>
@@ -50,3 +57,4 @@ public:
     }
 };
 } // namespace rfbase
+#endif

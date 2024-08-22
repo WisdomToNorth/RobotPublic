@@ -25,60 +25,59 @@
 namespace rfgui
 {
 // return: cmd group name, cmd enum
-void CmdRegister::getUserCmds(std::vector<std::pair<std::string, cmd::ECmd>> &cmds)
+void CmdRegister::getUserCmds(std::vector<std::pair<std::string, ECmd>> &cmds)
 {
     /* File */
-    cmds.emplace_back("File", cmd::ECmd::NewContext);
-    // cmds.emplace_back("File", cmd::ECmd::RemoveContext);
-    // cmds.emplace_back("File", cmd::ECmd::ChangeContext);
-    cmds.emplace_back("File", cmd::ECmd::ImportFile);
-    cmds.emplace_back("File", cmd::ECmd::ExportFile);
-    cmds.emplace_back("File", cmd::ECmd::Setting);
+    cmds.emplace_back("File", ECmd::NewContext);
+    cmds.emplace_back("File", ECmd::RemoveContext);
+    cmds.emplace_back("File", ECmd::ChangeContext);
+    cmds.emplace_back("File", ECmd::ImportFile);
+    cmds.emplace_back("File", ECmd::ExportFile);
+    cmds.emplace_back("File", ECmd::Setting);
 
     /* DB */
-    cmds.emplace_back("Data", cmd::ECmd::ConfigRobot);
-    cmds.emplace_back("Data", cmd::ECmd::DrawDemo);
-    cmds.emplace_back("Data", cmd::ECmd::ShowInfo);
-    cmds.emplace_back("Data", cmd::ECmd::Remove);
-    cmds.emplace_back("Data", cmd::ECmd::Undo);
-    cmds.emplace_back("Data", cmd::ECmd::Ruler);
-    cmds.emplace_back("Data", cmd::ECmd::Move);
+    cmds.emplace_back("Data", ECmd::ConfigRobot);
+    cmds.emplace_back("Data", ECmd::DrawDemo);
+    cmds.emplace_back("Data", ECmd::ShowInfo);
+    cmds.emplace_back("Data", ECmd::Remove);
+    cmds.emplace_back("Data", ECmd::Undo);
+    cmds.emplace_back("Data", ECmd::Ruler);
+    cmds.emplace_back("Data", ECmd::Move);
 
     /* Robot */
-    cmds.emplace_back("Viewer", cmd::ECmd::RobotMove);
-    cmds.emplace_back("Viewer", cmd::ECmd::RobotForward);
+    cmds.emplace_back("Viewer", ECmd::RobotMove);
+    cmds.emplace_back("Viewer", ECmd::RobotForward);
 
     /* Viewer, not add to toolbar */
-    // cmds.emplace_back("Viewer", cmd::ECmd::PanViewer);
-    // cmds.emplace_back("Viewer", cmd::ECmd::RotViewer);
-    // cmds.emplace_back("Viewer", cmd::ECmd::ZoomViewer);
+    // cmds.emplace_back("Viewer", ECmd::PanViewer);
+    // cmds.emplace_back("Viewer", ECmd::RotViewer);
+    // cmds.emplace_back("Viewer", ECmd::ZoomViewer);
 }
 
-std::unique_ptr<CmdBase> CmdRegister::createCommand(const std::string &cmd_name)
+std::unique_ptr<CmdBase> CmdRegister::createCommand(ECmd cmd_enum)
 {
-    auto cmd_enum = cmd::CmdUtil::getCmdEnum(cmd_name);
     std::unique_ptr<CmdBase> cmd;
     switch (cmd_enum)
     {
-    case cmd::ECmd::ConfigRobot: cmd = std::make_unique<CmdConfigRobot>(); break;
-    case cmd::ECmd::ChangeContext: cmd = std::make_unique<CmdChangeContext>(); break;
-    case cmd::ECmd::DrawDemo: cmd = std::make_unique<CmdAddDemoVariant>(); break;
-    case cmd::ECmd::ExportFile: cmd = std::make_unique<CmdExportFile>(); break;
-    case cmd::ECmd::ImportFile: cmd = std::make_unique<CmdImportFile>(); break;
-    case cmd::ECmd::Move: cmd = std::make_unique<CmdMove>(); break;
-    case cmd::ECmd::NewContext: cmd = std::make_unique<CmdNewContext>(); break;
-    case cmd::ECmd::PanViewer: cmd = std::make_unique<CmdPanViewer>(); break;
-    case cmd::ECmd::RemoveContext: cmd = std::make_unique<CmdRemoveContext>(); break;
-    case cmd::ECmd::RobotForward: cmd = std::make_unique<CmdRobotForward>(); break;
-    case cmd::ECmd::RobotMove: cmd = std::make_unique<CmdRobotMove>(); break;
-    case cmd::ECmd::Ruler: cmd = std::make_unique<CmdRuler>(); break;
-    case cmd::ECmd::Remove: cmd = std::make_unique<CmdRemove>(); break;
-    case cmd::ECmd::RotViewer: cmd = std::make_unique<CmdRotViewer>(); break;
-    case cmd::ECmd::Setting: cmd = std::make_unique<CmdSetting>(); break;
-    case cmd::ECmd::ShowInfo: cmd = std::make_unique<CmdShowInfo>(); break;
-    case cmd::ECmd::Undo: cmd = nullptr; break;
-    case cmd::ECmd::ZoomViewer: cmd = std::make_unique<CmdZoomViewer>(); break;
-    case cmd::ECmd::None: break;
+    case ECmd::ConfigRobot: cmd = std::make_unique<CmdConfigRobot>(); break;
+    case ECmd::ChangeContext: cmd = std::make_unique<CmdChangeContext>(); break;
+    case ECmd::DrawDemo: cmd = std::make_unique<CmdAddDemoVariant>(); break;
+    case ECmd::ExportFile: cmd = std::make_unique<CmdExportFile>(); break;
+    case ECmd::ImportFile: cmd = std::make_unique<CmdImportFile>(); break;
+    case ECmd::Move: cmd = std::make_unique<CmdMove>(); break;
+    case ECmd::NewContext: cmd = std::make_unique<CmdNewContext>(); break;
+    case ECmd::PanViewer: cmd = std::make_unique<CmdPanViewer>(); break;
+    case ECmd::RemoveContext: cmd = std::make_unique<CmdRemoveContext>(); break;
+    case ECmd::RobotForward: cmd = std::make_unique<CmdRobotForward>(); break;
+    case ECmd::RobotMove: cmd = std::make_unique<CmdRobotMove>(); break;
+    case ECmd::Ruler: cmd = std::make_unique<CmdRuler>(); break;
+    case ECmd::Remove: cmd = std::make_unique<CmdRemove>(); break;
+    case ECmd::RotViewer: cmd = std::make_unique<CmdRotViewer>(); break;
+    case ECmd::Setting: cmd = std::make_unique<CmdSetting>(); break;
+    case ECmd::ShowInfo: cmd = std::make_unique<CmdShowInfo>(); break;
+    case ECmd::Undo: cmd = nullptr; break;
+    case ECmd::ZoomViewer: cmd = std::make_unique<CmdZoomViewer>(); break;
+    case ECmd::None: break;
     default:
     {
         assert(false);
@@ -87,7 +86,7 @@ std::unique_ptr<CmdBase> CmdRegister::createCommand(const std::string &cmd_name)
     }
     if (cmd)
     {
-        cmd->setCmdName(cmd_name);
+        cmd->setCmdName(CmdUtil::getCmdName(cmd_enum));
     }
     return cmd;
 };

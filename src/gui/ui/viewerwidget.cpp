@@ -112,7 +112,7 @@ void ViewerWidget::updateMouseLocLabel(double x, double y, double z)
 
 bool ViewerWidget::addChangeContextCommand(int index)
 {
-    if (GApp::instance().addToCmdList(cmd::kChangeContext, {.int_value = index}))
+    if (GApp::instance().addToCmdList(ECmd::ChangeContext, {.int_value = index}))
     {
         return GApp::instance().executeLatestCmd();
     }
@@ -141,7 +141,7 @@ void ViewerWidget::on_btn_NextView_clicked()
 
 void ViewerWidget::on_btn_CloseView_clicked()
 {
-    if (GApp::instance().addToCmdList(cmd::kRemoveContext))
+    if (GApp::instance().addToCmdList(ECmd::RemoveContext))
     {
         std::ignore = GApp::instance().executeLatestCmd();
     }

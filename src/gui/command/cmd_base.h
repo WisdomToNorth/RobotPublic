@@ -25,13 +25,18 @@ public:
     virtual void processVEvent(const rfapp::ViewerEvent & /*info*/);
 
     CmdType getType() const;
+
     void setCmdName(const std::string &cmd_name);
     std::string getCmdName() const;
-    const cmd::Parameter &getParameter() const;
-    void setParameter(const cmd::Parameter &parameter);
+
+    const Parameter &getParameter() const;
+    void setParameter(const Parameter &parameter);
+
+    void setEnabled(bool enabled);
+    bool isEnabled() const;
 
 protected:
-    cmd::Parameter parameter_;
+    Parameter parameter_;
 
 private:
     friend class CmdMngr;
@@ -39,6 +44,7 @@ private:
     virtual void execute() = 0;
     CmdType type_ = CmdType::Unknown;
     std::string cmd_name_;
+    bool enabled_ = true;
 };
 
 } // namespace rfgui
