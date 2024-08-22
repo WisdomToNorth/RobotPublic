@@ -1,40 +1,54 @@
 
 
-set(RFDB_LIB_FILES
-    dbAssembly.cpp
+
+set(RFDB_HEADERS
     dbAssembly.h
     dbCommon.h
-    dbLabelTree.cpp
     dbLabelTree.h
-    dbMesh.cpp
     dbMesh.h
-    dbPart.cpp
     dbPart.h
-    dbPointCloud.cpp
     dbPointCloud.h
-    dbProperty.cpp
-    dbRobot.cpp
+    dbProperty.h
     dbRobot.h
     dbRobotDefine.h
-    dbTrace.cpp
     dbTrace.h
-    dbTrajectory.cpp
     dbTrajectory.h
-    dbVariant.cpp
     dbVariant.h
-    dbProperty.h
+)
 
-    dbutils/dbcheck.cpp
-    dbutils/dbcheck.h
-    dbutils/dbpartutils.cpp
+set(RFDB_SOURCES
+    dbAssembly.cpp
+    dbLabelTree.cpp
+    dbMesh.cpp
+    dbPart.cpp
+    dbPointCloud.cpp
+    dbProperty.cpp
+    dbRobot.cpp
+    dbTrace.cpp
+    dbTrajectory.cpp
+    dbVariant.cpp
+)
+
+set(RFDB_UTIL_HEADERS
     dbutils/dbpartutils.h
-    dbutils/dbVariantUtils.cpp
+    dbutils/dbcheck.h
     dbutils/dbVariantUtils.h
-    dbutils/shapebuilder.cpp
     dbutils/shapebuilder.h
 )
 
-add_library(RfDB STATIC ${RFDB_LIB_FILES})
+set(RFDB_UTIL_SOURCES
+    dbutils/dbcheck.cpp
+    dbutils/dbpartutils.cpp
+    dbutils/dbVariantUtils.cpp
+    dbutils/shapebuilder.cpp
+)
+
+add_library(RfDB STATIC
+${RFDB_HEADERS}
+${RFDB_SOURCES}
+${RFDB_UTIL_HEADERS}
+${RFDB_UTIL_SOURCES}
+)
 
 target_link_libraries(RfDB
 PUBLIC
@@ -60,33 +74,11 @@ if (EXISTS ${RFDB_INCLUDE_DIR})
     file(REMOVE_RECURSE ${RFDB_INCLUDE_DIR})
 endif()
 
-set(RFDB_HEADERS
-    dbProperty.h
-    dbMesh.h
-    dbTrace.h
-    dbCommon.h
-    dbAssembly.h
-    dbPart.h
-    dbVariant.h
-    dbPointCloud.h
-    dbRobotDefine.h
-    dbRobot.h
-    dbLabelTree.h
-    dbTrajectory.h
-)
-
 foreach(RFDB_HEADER ${RFDB_HEADERS})
     file(COPY ${RFDB_HEADER} DESTINATION ${RFDB_INCLUDE_DIR})
 endforeach()
 
-set(RFDB_UTILS_HEADERS
-    dbutils/dbpartutils.h
-    dbutils/dbcheck.h
-    dbutils/shapebuilder.h
-    dbutils/dbVariantUtils.h
-)
-
-foreach(RFDB_UTILS_HEADER ${RFDB_UTILS_HEADERS})
+foreach(RFDB_UTILS_HEADER ${RFDB_UTIL_HEADERS})
     file(COPY ${RFDB_UTILS_HEADER} DESTINATION ${RFDB_UTILS_INCLUDE_DIR})
 endforeach()
 

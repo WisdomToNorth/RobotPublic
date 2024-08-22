@@ -22,7 +22,7 @@ def add_str_to_filename(file_dir, str):
 
 # print each filename in given directory into a txt in .py folder
 def print_filename_to_txt(file_dir, suffix=".*"):
-    with open("filename.txt", "a") as f:
+    with open("build/filename.txt", "a") as f:
         filenames = [filename for filename in os.listdir(file_dir) if os.path.isfile(os.path.join(file_dir, filename)) and re.match(suffix, filename) is not None]
         filenames.sort()
         for filename in filenames:
@@ -38,7 +38,7 @@ def replace_str_in_filename(file_dir, str, target_str):
                       os.path.join(file_dir, new_file_name))
 
 
-file_dir = r"C:\Users\HenryKang\Documents\CODE\RobotFramework\src\gui\ui"
+file_dir = r"C:\Users\HenryKang\Documents\CODE\RobotPublic\src\rfio"
 
 # add_str_to_filename(file_dir, "fr")
 # replace_str_in_filename(file_dir, "frfr", "fr")

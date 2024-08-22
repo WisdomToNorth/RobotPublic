@@ -1,53 +1,63 @@
 # IO ASSIMP
 find_package(assimp REQUIRED)
 
-set(IO_FILES
-    brep_utils.cpp
-    writer_brep.cpp
+set(IO_HEADERS
+    assimpreader.h
+    brep_utils.h
+    graphics_mesh_data_source.h
+    io_format.h
+    mesh_utils.h
+    occ_progress_indicator.h
+    reader_base.h
+    reader_brep.h
+    reader_factory.h
+    reader_ply.h
+    reader_robot.h
+    reader_step.h
+    reader_trace.h
+    reader_trajectory.h
+    stdafx.h
+    tkernel_utils.h
+    writer_base.h
+    writer_brep.h
+    writer_robot.h
+    writer_trace.h
+    writer_trajectory.h
+)
+
+set(IO_SOURCES
     assimpreader.cpp
+    brep_utils.cpp
     graphics_mesh_data_source.cpp
-    reader_step.cpp
     io_format.cpp
-    reader_ply.cpp
     mesh_utils.cpp
-    reader_factory.cpp
-    stdafx.cpp
     occ_progress_indicator.cpp
     reader_brep.cpp
-    tkernel_utils.cpp
-    occ_progress_indicator.h
-    reader_brep.h
-    mesh_utils.h
-    reader_factory.h
-    io_format.h
-    reader_ply.h
-    graphics_mesh_data_source.h
-    reader_step.h
-    writer_base.h
-    stdafx.h
-    brep_utils.h
-    assimpreader.h
-    reader_base.h
-    tkernel_utils.h
-    writer_brep.h
-    reader_trajectory.h
-    reader_trajectory.cpp
-    writer_trajectory.h
-    writer_trajectory.cpp
-    reader_trace.h
-    reader_trace.cpp
-    writer_trace.h
-    writer_trace.cpp
-    writer_robot.h
-    writer_robot.cpp
-    reader_robot.h
+    reader_factory.cpp
+    reader_ply.cpp
     reader_robot.cpp
-    thirdparty/miniply.cpp
-    thirdparty/miniply.h
-    )
+    reader_step.cpp
+    reader_trace.cpp
+    reader_trajectory.cpp
+    stdafx.cpp
+    tkernel_utils.cpp
+    writer_brep.cpp
+    writer_robot.cpp
+    writer_trace.cpp
+    writer_trajectory.cpp
+)
+
+set(MINIPLY_FILES
+    ${CMAKE_SOURCE_DIR}/thirdparty/miniply/miniply.h
+    ${CMAKE_SOURCE_DIR}/thirdparty/miniply/miniply.cpp
+)
 
 # generate an object library from sources
-add_library(RfIO STATIC ${IO_FILES})
+add_library(RfIO STATIC
+    ${IO_HEADERS}
+    ${IO_SOURCES}
+    ${MINIPLY_FILES}
+)
 
 target_link_libraries(RfIO PRIVATE
     ${OpenCASCADE_LIBRARIES}
@@ -71,22 +81,6 @@ if (EXISTS ${IO_INCLUDE_DIR})
     file(REMOVE_RECURSE ${IO_INCLUDE_DIR})
 endif()
 
-set(IO_HEADERS
-    reader_brep.h
-    mesh_utils.h
-    reader_factory.h
-    io_format.h
-    reader_ply.h
-    reader_step.h
-    writer_base.h
-    brep_utils.h
-    assimpreader.h
-    reader_base.h
-    tkernel_utils.h
-    writer_brep.h
-    writer_robot.h
-    reader_robot.h
-)
 
 
 foreach(IO_HEADER ${IO_HEADERS})

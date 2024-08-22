@@ -26,6 +26,11 @@ if(BUILD_WITH_GUI)
   add_definitions(-DENABLE_GUI)
 endif()
 
+if(WIN32)
+    #need by github action windows
+    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/SetUpOCCT.cmake)
+endif()
+
 include(${PROJECT_SOURCE_DIR}/cmake/PrintMessage.cmake)
 include(${PROJECT_SOURCE_DIR}/cmake/CopyRegFile.cmake)
 include(${PROJECT_SOURCE_DIR}/cmake/SetFlags.cmake)
@@ -37,7 +42,6 @@ include(${PROJECT_SOURCE_DIR}/cmake/Doxygen.cmake)
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/src/rfbase)
 add_subdirectory(${PROJECT_SOURCE_DIR}/src/rfgraphics)
-
 add_subdirectory(${PROJECT_SOURCE_DIR}/src/rflog)
 add_subdirectory(${PROJECT_SOURCE_DIR}/src/rfdb)
 add_subdirectory(${PROJECT_SOURCE_DIR}/src/rfapp)

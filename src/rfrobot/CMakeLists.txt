@@ -44,7 +44,6 @@ PRIVATE
     ${PROJECT_SOURCE_DIR}/thirdparty
     )
 
-
 set(ROBOT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/build/include/rfrobot)
 if (EXISTS ${ROBOT_INCLUDE_DIR})
     file(REMOVE_RECURSE ${ROBOT_INCLUDE_DIR})

@@ -107,7 +107,7 @@ IncludeCategories:
     CaseSensitive: true
 
 # third party
-  - Regex: '^<(kdbindings/|magic_enum/|assimp/|ompl/|gtest/|boost/|kdl/|Eigen/).*>'
+  - Regex: '^<(kdbindings/|magic_enum/|assimp/|ompl/|gtest/|boost/|miniply/|kdl/|Eigen/).*>'
     Priority: 5
     SortPriority: 0
     CaseSensitive: true

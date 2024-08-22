@@ -80,5 +80,5 @@ foreach(RFGRAPHIC_HEADER ${RFGRAPHIC_HEADERS})
     file(COPY ${RFGRAPHIC_HEADER} DESTINATION ${RFGRAPHIC_INCLUDE_DIR})
 endforeach()
 
-#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/test)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/test)
 

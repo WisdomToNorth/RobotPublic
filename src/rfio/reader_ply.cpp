@@ -22,6 +22,7 @@
 #include <TDataStd_Name.hxx>
 #include <TopoDS_Face.hxx>
 #include <TopoDS_Shape.hxx>
+#include <miniply/miniply.h>
 
 #include "rfbase/datautils.h"
 #include "rfbase/rfmath.h"
@@ -30,7 +31,6 @@
 #include "brep_utils.h"
 #include "graphics_mesh_data_source.h"
 #include "mesh_utils.h"
-#include "thirdparty/miniply.h"
 #include "tkernel_utils.h"
 
 namespace rfio
